@@ -12,7 +12,7 @@ import { ClientesComponent } from './clientes/clientes.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-      ClientesComponent
+    ClientesComponent
    ],
   imports: [
     BrowserModule,
