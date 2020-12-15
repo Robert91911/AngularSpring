@@ -28,13 +28,11 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
-    @Transactional(readOnly = true) //Anotación opcional
     public Cliente save(Cliente cliente) {
         return clienteDao.save(cliente);
     }
 
     @Override
-    @Transactional(readOnly = true) //Anotación opcional
     public void delete(Long id) {
         clienteDao.deleteById(id);
     }

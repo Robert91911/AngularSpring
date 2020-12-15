@@ -38,14 +38,14 @@ public class ClienteRestController {
         return clienteService.findById(id);
     }
 
-    @PostMapping(value="/clientes")
+    @PostMapping("/clientes")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente create(@RequestBody Cliente cliente) {
         //cliente.setCreatedAt(new Date()); Esto se puede hacer así o dentro de la entidad Cliente con el prePersist
         return clienteService.save(cliente);
     }
 
-    @PutMapping(value="clientes/{id}")
+    @PutMapping("clientes/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Cliente update(@PathVariable Long id, @RequestBody Cliente cliente) {
         Cliente clienteAtual = clienteService.findById(id);
