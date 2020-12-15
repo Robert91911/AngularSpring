@@ -1,8 +1,8 @@
-package com.atos.springboot.backend.apirest.models.services;
+package com.robert9191.springboot.backend.apirest.models.services;
 
 import java.util.List;
 
-import com.atos.springboot.backend.apirest.models.entity.Cliente;
+import com.robert9191.springboot.backend.apirest.models.entity.Cliente;
 
 public interface IClienteService {
     

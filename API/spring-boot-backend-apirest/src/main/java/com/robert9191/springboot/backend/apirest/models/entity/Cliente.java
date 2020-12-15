@@ -1,4 +1,4 @@
-package com.atos.springboot.backend.apirest.models.entity;
+package com.robert9191.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;

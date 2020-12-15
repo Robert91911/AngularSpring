@@ -1,4 +1,4 @@
-package com.atos.springboot.backend.apirest;
+package com.robert9191.springboot.backend.apirest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
