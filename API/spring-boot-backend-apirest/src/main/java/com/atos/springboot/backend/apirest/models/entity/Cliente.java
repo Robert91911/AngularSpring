@@ -24,7 +24,7 @@ public class Cliente implements Serializable {
 	private String apellido;
 	private String email;
 	
-	@Column(name = "created_at")
+	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
 	

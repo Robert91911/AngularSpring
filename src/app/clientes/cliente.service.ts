@@ -2,17 +2,28 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Cliente } from '../interfaces/Cliente';
 import { CLIENTES } from './clientes.json';
-
+import { HttpClient } from '@angular/common/http'
+import { map } from 'rxjs/operators'
+ 
 @Injectable({
   providedIn: 'root'
 })
 
 export class ClienteService {
 
-  constructor() { }
+  private urlEndPoint:string = 'http://localhost:8080/api/clientes'
+
+  constructor(private http: HttpClient) { }
 
   getClientes(): Observable<Cliente[]> {
-    return of(CLIENTES)
+    //return of(CLIENTES) //Solo para probar antes de tener el backend
+    return this.http.get<Cliente[]>(this.urlEndPoint) //También funciona, es la forma normal y rapida (es lo mismo que lo de abajo comentado)
+
+    /*
+    return this.http.get(this.urlEndPoint).pipe(
+      map( (response) => response as Cliente[] )
+    );
+    */
   }
 
 }
