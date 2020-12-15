@@ -15,6 +15,7 @@
           <td>APELLIDO</td>
           <td>EMAIL</td>
           <td>FECHA</td>
+          <td>Editar</td>
         </tr>
       </thead>
       <tbody>
@@ -24,6 +25,9 @@
           <td> {{ cliente.apellido }} </td>
           <td> {{ cliente.email }} </td>
           <td> {{ cliente.createdAt }} </td>
+          <td>
+            <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form', cliente.id]">Editar</button>
+          </td>
         </tr>
       </tbody>
     </table>
