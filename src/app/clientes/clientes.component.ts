@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Cliente } from '../interfaces/Cliente';
 import { ClienteService } from './cliente.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-clientes',
@@ -15,9 +16,16 @@ export class ClientesComponent implements OnInit {
   constructor(private clienteSrv: ClienteService) { }
 
   ngOnInit() {
-    this.clienteSrv.getClientes().subscribe(
-      clientes => this.clientes = clientes
+    this.clienteSrv.getClientes().pipe(
+      tap(clientes => {
+        this.clientes = clientes
+        console.log("ClienteComponent : tap 3")
+        clientes.forEach( cliente => {
+          console.log(cliente.nombre)
+        });
+      })
     )
+    .subscribe()
   }
 
   delete(cliente: Cliente): void {

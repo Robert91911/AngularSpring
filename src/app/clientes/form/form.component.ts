@@ -14,7 +14,7 @@ export class FormComponent implements OnInit {
   cliente: Cliente = new Cliente()
   titulo: string = "Crear cliente"
 
-  private errores: string[];
+  errores: string[];
 
   constructor(
     private clienteSrv: ClienteService, 

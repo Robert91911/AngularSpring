@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, LOCALE_ID } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { Cliente } from '../interfaces/Cliente';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { map, catchError } from 'rxjs/operators'
+import { map, catchError, tap } from 'rxjs/operators'
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +28,40 @@ export class ClienteService {
 
 
     return this.http.get(this.urlEndPoint).pipe(
-      map((response) => response as Cliente[])
+      tap(response => {
+        let clientes = response as Cliente[];
+        console.log("ClienteService: tap 1")
+        clientes.forEach( cliente => {
+          console.log(cliente.nombre)
+        }
+
+        )
+      }),
+      map((response) => {
+
+        let clientes = response as Cliente[];
+        
+        return clientes.map(cliente => {
+
+          cliente.nombre = cliente.nombre.toUpperCase();
+          
+          
+          //let datePipe = new DatePipe('es')
+          //cliente.createdAt = datePipe.transform(cliente.createdAt, 'EEEE dd, MMMM yyyy'); //Se usa para listas pero tambien funciona
+          //cliente.createdAt = formatDate(cliente.createdAt, 'dd-MM-yyyy', 'en-US') //La forma normal y nativa de anglar
+
+          return cliente;
+
+        });
+      }),
+      tap(response => {
+        console.log("ClienteService: tap 2")
+        response.forEach( cliente => {
+          console.log(cliente.nombre)
+        }
+
+        )
+      }),
     );
 
   }
