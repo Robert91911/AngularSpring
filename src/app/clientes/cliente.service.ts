@@ -22,44 +22,39 @@ export class ClienteService {
     private http: HttpClient,
     private router: Router) { }
 
-  getClientes(): Observable<Cliente[]> {
+  getClientes(page : number): Observable<any> {
     //return of(CLIENTES) //Solo para probar antes de tener el backend
     //return this.http.get<Cliente[]>(this.urlEndPoint) //También funciona, es la forma normal y rapida (es lo mismo que lo de abajo comentado)
 
 
-    return this.http.get(this.urlEndPoint).pipe(
-      tap(response => {
+    return this.http.get(this.urlEndPoint + '/page/' + page).pipe(
+      tap( (response: any ) => {
         let clientes = response as Cliente[];
-        console.log("ClienteService: tap 1")
-        clientes.forEach( cliente => {
+        console.log("ClienteService: tap 1");
+        (response.content as Cliente[]).forEach( cliente => {
           console.log(cliente.nombre)
         }
 
         )
       }),
-      map((response) => {
-
-        let clientes = response as Cliente[];
-        
-        return clientes.map(cliente => {
+      map( ( response: any ) => {
+        (response.content as Cliente[]).map(cliente => {
 
           cliente.nombre = cliente.nombre.toUpperCase();
-          
-          
           //let datePipe = new DatePipe('es')
           //cliente.createdAt = datePipe.transform(cliente.createdAt, 'EEEE dd, MMMM yyyy'); //Se usa para listas pero tambien funciona
           //cliente.createdAt = formatDate(cliente.createdAt, 'dd-MM-yyyy', 'en-US') //La forma normal y nativa de anglar
-
           return cliente;
 
         });
+        return response;
       }),
-      tap(response => {
-        console.log("ClienteService: tap 2")
-        response.forEach( cliente => {
+      tap( ( response ) => {
+        console.log("ClienteService: tap 2");
+        ( response.content as Cliente[] ).forEach( cliente => {
           console.log(cliente.nombre)
         }
-
+ 
         )
       }),
     );
