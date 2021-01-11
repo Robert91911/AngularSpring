@@ -8,12 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -37,14 +37,12 @@ public class Cliente implements Serializable {
 	@Column(nullable = false, unique = true)
 	private String email;
 	
+	@NotNull(message = "La fecha no puede estar vacía")
 	@Column(name = "create_at")
 	@Temporal(TemporalType.DATE)
 	private Date createdAt;
-	
-	@PrePersist
-	public void prePersist() {
-		createdAt = new Date();
-	}
+
+	private String foto;
 
 	public Long getId() {
 		return id;
@@ -75,6 +73,14 @@ public class Cliente implements Serializable {
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
+	}
+
+	public String getFoto() {
+		return this.foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 	
 	/**

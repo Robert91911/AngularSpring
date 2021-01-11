@@ -12,8 +12,10 @@ import { PaginatorComponent } from './clientes/paginator/paginator.component';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { registerLocaleData } from '@angular/common';
-import locales from '@angular/common/locales/es'
-
+import locales from '@angular/common/locales/es';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 registerLocaleData(locales, 'es')
 
 @NgModule({
@@ -29,7 +31,10 @@ registerLocaleData(locales, 'es')
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatMomentDateModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es' }
