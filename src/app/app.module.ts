@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { FormComponent } from './clientes/form/form.component'
+import { PaginatorComponent } from './clientes/paginator/paginator.component';
 
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
@@ -21,7 +22,8 @@ registerLocaleData(locales, 'es')
     HeaderComponent,
     FooterComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PaginatorComponent
    ],
   imports: [
     BrowserModule,
