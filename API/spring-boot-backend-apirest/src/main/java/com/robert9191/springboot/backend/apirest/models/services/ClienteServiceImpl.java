@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.robert9191.springboot.backend.apirest.models.dao.IClienteDao;
 import com.robert9191.springboot.backend.apirest.models.entity.Cliente;
+import com.robert9191.springboot.backend.apirest.models.entity.Region;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -43,6 +44,12 @@ public class ClienteServiceImpl implements IClienteService {
     @Override
     public void delete(Long id) {
         clienteDao.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true) // Anotación opcional
+    public List<Region> findAllRegiones() {
+        return clienteDao.findAllRegiones();
     }
 
     

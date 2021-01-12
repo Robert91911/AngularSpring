@@ -1,28 +1,20 @@
 package com.robert9191.springboot.backend.apirest.controllers;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 import com.robert9191.springboot.backend.apirest.models.entity.Cliente;
+import com.robert9191.springboot.backend.apirest.models.entity.Region;
 import com.robert9191.springboot.backend.apirest.models.services.IClienteService;
 import com.robert9191.springboot.backend.apirest.models.services.IUploadService;
 
-import org.aspectj.weaver.IUnwovenClassFile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -53,8 +45,6 @@ public class ClienteRestController {
 
     @Autowired
     private IUploadService uploadService;
-
-    private final Logger log = LoggerFactory.getLogger(ClienteRestController.class);
 
     @GetMapping("/clientes")
     public List<Cliente> index() {
@@ -158,6 +148,7 @@ public class ClienteRestController {
             clienteAtual.setNombre(cliente.getNombre());
             clienteAtual.setEmail(cliente.getEmail());
             clienteAtual.setCreatedAt(cliente.getCreatedAt());
+            clienteAtual.setRegion(cliente.getRegion());
 
             clienteUpdated = clienteService.save(clienteAtual);
 
@@ -246,6 +237,11 @@ public class ClienteRestController {
         cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachament; filename=\"" + recurso.getFilename() + "\"");
 
         return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
+    }
+
+    @GetMapping("/clientes/regiones")
+    public List<Region> listarRegiones() {
+        return clienteService.findAllRegiones();
     }
     
 

@@ -35,7 +35,7 @@ public class UploadFileServiceImpl implements IUploadService {
             try {
                 recurso = new UrlResource(rutaArchivo.toUri());
             } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
+
                 e.printStackTrace();
             }
 
