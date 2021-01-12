@@ -26,7 +26,6 @@ public class ClienteServiceImpl implements IClienteService {
     @Override
     @Transactional(readOnly = true) // Anotación opcional
     public Page<Cliente> findAll(Pageable pageable) {
-        // TODO Auto-generated method stub
         return clienteDao.findAll(pageable);
     }
 

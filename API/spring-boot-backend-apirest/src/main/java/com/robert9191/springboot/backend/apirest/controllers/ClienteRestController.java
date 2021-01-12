@@ -15,7 +15,9 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 import com.robert9191.springboot.backend.apirest.models.entity.Cliente;
 import com.robert9191.springboot.backend.apirest.models.services.IClienteService;
+import com.robert9191.springboot.backend.apirest.models.services.IUploadService;
 
+import org.aspectj.weaver.IUnwovenClassFile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +50,9 @@ public class ClienteRestController {
 
     @Autowired
     private IClienteService clienteService;
+
+    @Autowired
+    private IUploadService uploadService;
 
     private final Logger log = LoggerFactory.getLogger(ClienteRestController.class);
 
@@ -175,19 +180,9 @@ public class ClienteRestController {
         Cliente cliente = clienteService.findById(id);
 
         try {
-
             String nombreFotoAnterior = cliente.getFoto();
 
-            if (nombreFotoAnterior != null && nombreFotoAnterior.length() > 0) {
-
-                Path rutaFotoAnterior = Paths.get("uploads").resolve(nombreFotoAnterior).toAbsolutePath();
-                File archivoFotoAnterior = rutaFotoAnterior.toFile();
-
-                if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
-
-                    archivoFotoAnterior.delete();
-                }
-            }
+            uploadService.eliminar(nombreFotoAnterior);
 
             clienteService.delete(id);
 
@@ -210,13 +205,10 @@ public class ClienteRestController {
         Cliente cliente = clienteService.findById(id);
 
         if (!archivo.isEmpty()) {
-            String nombreArchivo = UUID.randomUUID().toString() + "_" + archivo.getOriginalFilename().replace(" ", "-");
-            Path rutaArchivo = Paths.get("uploads").resolve(nombreArchivo).toAbsolutePath();
 
-            log.info(rutaArchivo.toString());
-
+            String nombreArchivo = null;
             try {
-                Files.copy(archivo.getInputStream(), rutaArchivo);
+                nombreArchivo = uploadService.copiar(archivo);
             } catch (IOException e) {
                 response.put("mensaje", "Error  al subir la imagen");
                 response.put("error", e.getMessage().concat(": ").concat(e.getCause().getMessage()));
@@ -225,16 +217,7 @@ public class ClienteRestController {
 
             String nombreFotoAnterior = cliente.getFoto();
 
-            if (nombreFotoAnterior != null && nombreFotoAnterior.length() > 0) {
-
-                Path rutaFotoAnterior = Paths.get("uploads").resolve(nombreFotoAnterior).toAbsolutePath();
-                File archivoFotoAnterior = rutaFotoAnterior.toFile();
-
-                if (archivoFotoAnterior.exists() && archivoFotoAnterior.canRead()) {
-
-                    archivoFotoAnterior.delete();
-                }
-            }
+            uploadService.eliminar(nombreFotoAnterior);
 
             cliente.setFoto(nombreArchivo);
 
@@ -250,29 +233,13 @@ public class ClienteRestController {
     @GetMapping("/uploads/img/{nombreFoto:.+}")
     public ResponseEntity<Resource> verFoto(@PathVariable String nombreFoto) {
 
-        Path rutaArchivo = Paths.get("uploads").resolve(nombreFoto).toAbsolutePath();
-        log.info(rutaArchivo.toString());
-
         Resource recurso = null;
 
         try {
-            recurso = new UrlResource(rutaArchivo.toUri());
+            recurso = uploadService.cargar(nombreFoto);
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
-        }
-
-        if(!recurso.exists() && !recurso.isReadable()){
-            rutaArchivo = Paths.get("src/main/resources/static/images").resolve("nofoto.png").toAbsolutePath();
-
-            try {
-                recurso = new UrlResource(rutaArchivo.toUri());
-            } catch (MalformedURLException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-
-            log.error("No se pudo cargar la imagen " + nombreFoto);
         }
 
         HttpHeaders cabecera = new HttpHeaders();
