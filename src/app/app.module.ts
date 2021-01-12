@@ -16,6 +16,7 @@ import locales from '@angular/common/locales/es';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { DetalleComponent } from './clientes/detalle/detalle.component';
 registerLocaleData(locales, 'es')
 
 @NgModule({
@@ -25,7 +26,8 @@ registerLocaleData(locales, 'es')
     FooterComponent,
     ClientesComponent,
     FormComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    DetalleComponent
    ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ registerLocaleData(locales, 'es')
     FormsModule,
     BrowserAnimationsModule,
     MatDatepickerModule,
-    MatMomentDateModule
+    MatMomentDateModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'es' }
