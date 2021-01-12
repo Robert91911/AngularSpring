@@ -1,7 +1,7 @@
 import { Injectable, LOCALE_ID } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { Cliente } from '../interfaces/Cliente';
-import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpEvent, HttpHeaders, HttpRequest } from '@angular/common/http'
 import { map, catchError, tap } from 'rxjs/operators'
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
@@ -109,23 +109,17 @@ export class ClienteService {
     )
   }
 
-  upload(archivo: File, id) : Observable<Cliente> {
+  upload(archivo: File, id) : Observable<HttpEvent<{}>> {
 
     let formData = new FormData();
     formData.append("archivo", archivo);
     formData.append("id", id);
 
-    
-    return this.http.post(`${this.urlEndPoint}/upload`, formData).pipe(
+    const req = new HttpRequest('POST', `${this.urlEndPoint}/upload`, formData, {
+      reportProgress: true,
+    });
 
-      map( (response: any) => response.cliente as Cliente),
-
-      catchError(e => {
-        Swal.fire(e.error.mensaje, e.error.error, 'error');
-        return throwError(e);
-
-      })
-    );
+    return this.http.request(req);
 
   }
 

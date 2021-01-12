@@ -4,6 +4,7 @@ import { Cliente } from '../interfaces/Cliente';
 import { ClienteService } from './cliente.service';
 import { tap } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { ModalService } from './detalle/modal.service';
 
 @Component({
   selector: 'app-clientes',
@@ -14,10 +15,12 @@ export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
   paginador: any;
+  clienteSeleccionado: Cliente;
 
   constructor(
     private clienteSrv: ClienteService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private modalSrv: ModalService,
   ) { }
 
   ngOnInit() {
@@ -77,6 +80,11 @@ export class ClientesComponent implements OnInit {
 
       }
     })
+  }
+
+  abrirModal(cliente: Cliente) {
+    this.clienteSeleccionado = cliente;
+    this.modalSrv.abrirModal();
   }
 
 }
