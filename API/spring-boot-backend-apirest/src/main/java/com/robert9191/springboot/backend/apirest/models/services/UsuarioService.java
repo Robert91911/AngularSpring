@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UsuarioService implements UserDetailsService {
+public class UsuarioService implements UserDetailsService, IUsuarioService {
 
     private Logger logger = LoggerFactory.getLogger(UsuarioService.class);
 
@@ -45,6 +45,12 @@ public class UsuarioService implements UserDetailsService {
         .collect(Collectors.toList());
 
         return new User(usuario.getUsername(), usuario.getPassword(), usuario.getEnabled(), true, true, true, authorities);
+    }
+
+    @Override
+    @Transactional(readOnly = true) //Si se omite esto, no pasa nada ya que el transactional lo maneja CrudRepository
+    public Usuario findByUsername(String username) {
+        return usuarioDAO.findByUsername(username);
     }
     
 }

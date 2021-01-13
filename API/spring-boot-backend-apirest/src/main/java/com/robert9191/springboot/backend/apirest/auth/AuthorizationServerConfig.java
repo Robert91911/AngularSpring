@@ -1,5 +1,7 @@
 package com.robert9191.springboot.backend.apirest.auth;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
@@ -20,6 +23,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
+
+    @Autowired
+    private InfoAdicionalToken infoAdicionalToken;
 
     @Autowired
     @Qualifier("authenticationManager")
@@ -46,8 +52,13 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
-        endpoints.authenticationManager(authenticationManager).tokenStore(tokenStore())
-                .accessTokenConverter(accessTokenConverter());
+        TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
+        tokenEnhancerChain.setTokenEnhancers(Arrays.asList(infoAdicionalToken, accessTokenConverter()));
+
+        endpoints
+        .authenticationManager(authenticationManager).tokenStore(tokenStore())
+        .accessTokenConverter(accessTokenConverter())
+        .tokenEnhancer(tokenEnhancerChain);
     }
 
     //Esto ya se hace solo, no hace falta
@@ -57,9 +68,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Bean
     public JwtAccessTokenConverter accessTokenConverter() {
-        JwtAccessTokenConverter jtwAccessTokenConverter = new JwtAccessTokenConverter();
-        jtwAccessTokenConverter.setSigningKey(JwtConfig.LLAVE_SECRETA);
-        return jtwAccessTokenConverter;
+        JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
+        jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVATE);
+        jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLIC);
+        return jwtAccessTokenConverter;
     }
 
     

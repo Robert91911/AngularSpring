@@ -14,7 +14,11 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     public void configure(HttpSecurity http) throws Exception {
         
         http.authorizeRequests()
-        .antMatchers(HttpMethod.GET ,"/api/clientes").permitAll()
+        .antMatchers(HttpMethod.GET ,"/api/clientes", "/api/clientes/page/**", "/api/upload/img/**").permitAll()
+        .antMatchers(HttpMethod.GET, "/api/clientes/{id}").hasAnyRole("USER", "ADMIN") //Por defectto lo guardamos como ROLE_USER, pero lo añade auto
+        .antMatchers(HttpMethod.POST, "/api/clientes/upload").hasAnyRole("USER", "ADMIN")
+        .antMatchers(HttpMethod.POST, "/api/clientes").hasRole("ADMIN")
+        .antMatchers("/api/clientes/**").hasRole("ADMIN")
         .anyRequest().authenticated();
     }
 }
