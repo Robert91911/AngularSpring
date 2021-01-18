@@ -9,7 +9,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { FormComponent } from './clientes/form/form.component'
 import { PaginatorComponent } from './clientes/paginator/paginator.component';
 
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { registerLocaleData } from '@angular/common';
 import locales from '@angular/common/locales/es';
@@ -18,6 +18,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { LoginComponent } from './usuarios/login/login.component';
+import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
+import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
 registerLocaleData(locales, 'es')
 
 @NgModule({
@@ -41,7 +43,9 @@ registerLocaleData(locales, 'es')
     MatMomentDateModule,
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'es' }
+    { provide: LOCALE_ID, useValue: 'es' },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

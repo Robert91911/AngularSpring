@@ -5,7 +5,7 @@
     <h5 class="card-title">Clientes</h5>
 
     <div class="my-2 text-left">
-      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">Crear cliente</button>
+      <button *ngIf="authSrv.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']">Crear cliente</button>
     </div>
 
     <div *ngIf="clientes?.length == 0" class="alert alert-info">
@@ -15,18 +15,18 @@
     <table class="table table-bordered table-striped" *ngIf="clientes?.length>0">
       <thead>
         <tr>
-          <td>#</td>
+          <td *ngIf="authSrv.hasRole('ROLE_USER')">#</td>
           <td>NOMBRE</td>
           <td>APELLIDO</td>
           <td>EMAIL</td>
           <td>FECHA</td>
-          <td>Editar</td>
-          <td>Eliminar</td>
+          <td *ngIf="authSrv.hasRole('ROLE_ADMIN')">Editar</td>
+          <td *ngIf="authSrv.hasRole('ROLE_ADMIN')">Eliminar</td>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let cliente of clientes">
-          <td> <img *ngIf="cliente?.foto" 
+          <td *ngIf="authSrv.hasRole('ROLE_USER')"> <img *ngIf="cliente?.foto" 
             (click)="abrirModal(cliente)" 
             src="http://localhost:8080/api/uploads/img/{{cliente.foto}}" 
             alt="Foto del cliente, {{cliente.nombre}}" 
@@ -45,10 +45,10 @@
           <td> {{ cliente.apellido | uppercase }} </td>
           <td> {{ cliente.email }} </td>
           <td> {{ cliente.createdAt | date:"EEEE dd, MMMM yyyy" }} </td>
-          <td>
+          <td *ngIf="authSrv.hasRole('ROLE_ADMIN')">
             <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form', cliente.id]">Editar</button>
           </td>
-          <td>
+          <td *ngIf="authSrv.hasRole('ROLE_ADMIN')">
             <button class="btn btn-rounded btn-danger" type="button" (click)="delete(cliente)">Eliminar</button>
           </td>
         </tr>

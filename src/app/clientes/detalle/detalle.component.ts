@@ -1,6 +1,7 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/interfaces/Cliente';
+import { AuthService } from 'src/app/usuarios/auth/auth.service';
 import Swal from 'sweetalert2';
 import { ClienteService } from '../cliente.service';
 import { ModalService } from './modal.service';
@@ -20,6 +21,7 @@ export class DetalleComponent implements OnInit {
   constructor(
     private clienteSrv: ClienteService,
     public modalSrv: ModalService,
+    public authSrv: AuthService,
   ) { }
 
   ngOnInit() {
