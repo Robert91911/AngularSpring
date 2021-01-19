@@ -13,7 +13,7 @@ import { ModalService } from './modal.service';
 })
 export class DetalleComponent implements OnInit {
 
-  @Input( ) cliente: Cliente;
+  @Input() cliente: Cliente;
   titulo: String = "Detalle cliente";
   fotoSeleccionada: File;
   progreso: number = 0;
