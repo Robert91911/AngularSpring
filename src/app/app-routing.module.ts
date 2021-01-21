@@ -4,6 +4,7 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { FormComponent } from './clientes/form/form.component';
 import { DetalleFacturaComponent } from './facturas/detalleFactura/detalleFactura.component';
+import { FacturasComponent } from './facturas/facturas-form/facturas.component';
 import { AuthGuard } from './usuarios/guards/auth.guard';
 import { RoleGuard } from './usuarios/guards/role.guard';
 import { LoginComponent } from './usuarios/login/login.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'clientes/form/:id', component: FormComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ROLE_ADMIN'}},
   { path: 'login', component: LoginComponent},
   { path: 'facturas/:id', component: DetalleFacturaComponent },
+  { path: 'facturas/form/:clienteId', component: FacturasComponent },
   //{path: 'clientes/ver/:id', component: DetalleComponent} //Quitado por utilización de un modal
 ];
 
