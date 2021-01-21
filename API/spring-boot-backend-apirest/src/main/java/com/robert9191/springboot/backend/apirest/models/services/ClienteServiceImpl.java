@@ -3,7 +3,9 @@ package com.robert9191.springboot.backend.apirest.models.services;
 import java.util.List;
 
 import com.robert9191.springboot.backend.apirest.models.dao.IClienteDao;
+import com.robert9191.springboot.backend.apirest.models.dao.IFacturaDao;
 import com.robert9191.springboot.backend.apirest.models.entity.Cliente;
+import com.robert9191.springboot.backend.apirest.models.entity.Factura;
 import com.robert9191.springboot.backend.apirest.models.entity.Region;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Autowired
     private IClienteDao clienteDao;
+
+    @Autowired
+    private IFacturaDao facturaDao;
 
     @Override
     @Transactional(readOnly = true) // Anotación opcional
@@ -50,6 +55,24 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional(readOnly = true) // Anotación opcional
     public List<Region> findAllRegiones() {
         return clienteDao.findAllRegiones();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Factura findFacturaById(Long id) {
+        return facturaDao.findById(id).orElse(null);
+    }
+
+    @Override
+    @Transactional
+    public Factura saveFactura(Factura factura) {
+        return facturaDao.save(factura);
+    }
+
+    @Override
+    @Transactional
+    public void deleteFacturaById(Long id) {
+        facturaDao.deleteById(id);
     }
 
     

@@ -20,6 +20,7 @@ import { DetalleComponent } from './clientes/detalle/detalle.component';
 import { LoginComponent } from './usuarios/login/login.component';
 import { TokenInterceptor } from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor } from './usuarios/interceptors/auth.interceptor';
+import { DetalleFacturaComponent } from './facturas/detalleFactura/detalleFactura.component';
 registerLocaleData(locales, 'es')
 
 @NgModule({
@@ -31,7 +32,8 @@ registerLocaleData(locales, 'es')
     FormComponent,
     PaginatorComponent,
     DetalleComponent,
-    LoginComponent
+    LoginComponent,
+    DetalleFacturaComponent,
    ],
   imports: [
     BrowserModule,
