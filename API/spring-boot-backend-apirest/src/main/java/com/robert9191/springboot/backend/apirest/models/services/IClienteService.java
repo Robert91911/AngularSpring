@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.robert9191.springboot.backend.apirest.models.entity.Cliente;
 import com.robert9191.springboot.backend.apirest.models.entity.Factura;
+import com.robert9191.springboot.backend.apirest.models.entity.Producto;
 import com.robert9191.springboot.backend.apirest.models.entity.Region;
 
 import org.springframework.data.domain.Page;
@@ -28,5 +29,7 @@ public interface IClienteService {
     public Factura saveFactura(Factura factura);
 
     public void deleteFacturaById(Long id);
+
+    public List<Producto> findProductoByNombre(String term);
 
 }

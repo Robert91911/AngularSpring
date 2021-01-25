@@ -4,8 +4,10 @@ import java.util.List;
 
 import com.robert9191.springboot.backend.apirest.models.dao.IClienteDao;
 import com.robert9191.springboot.backend.apirest.models.dao.IFacturaDao;
+import com.robert9191.springboot.backend.apirest.models.dao.IProductoDao;
 import com.robert9191.springboot.backend.apirest.models.entity.Cliente;
 import com.robert9191.springboot.backend.apirest.models.entity.Factura;
+import com.robert9191.springboot.backend.apirest.models.entity.Producto;
 import com.robert9191.springboot.backend.apirest.models.entity.Region;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Autowired
     private IFacturaDao facturaDao;
+    
+    @Autowired
+    private IProductoDao productoDao;
 
     @Override
     @Transactional(readOnly = true) // Anotación opcional
@@ -73,6 +78,12 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional
     public void deleteFacturaById(Long id) {
         facturaDao.deleteById(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true) // Anotación opcional
+    public List<Producto> findProductoByNombre(String term) {
+        return productoDao.findByNombre(term);
     }
 
     
