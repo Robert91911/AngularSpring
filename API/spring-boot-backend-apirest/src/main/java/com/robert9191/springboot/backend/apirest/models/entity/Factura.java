@@ -38,7 +38,7 @@ public class Factura implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date createAt;
 
-    @JsonIgnoreProperties({"facturas", "hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties(value = {"facturas", "hibernateLazyInitializer", "handler"}, allowSetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
@@ -64,6 +64,7 @@ public class Factura implements Serializable {
         this.createAt = new Date();
     }
 
+
     public Long getId() {
         return this.id;
     }
@@ -72,12 +73,12 @@ public class Factura implements Serializable {
         this.id = id;
     }
 
-    public String getDescipcion() {
+    public String getDescripcion() {
         return this.descripcion;
     }
 
-    public void setDescipcion(String descipcion) {
-        this.descripcion = descipcion;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getObservacion() {
@@ -111,6 +112,7 @@ public class Factura implements Serializable {
     public void setItems(List<ItemFactura> items) {
         this.items = items;
     }
+
 
     /**
      *

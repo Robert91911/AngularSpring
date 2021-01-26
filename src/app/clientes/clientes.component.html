@@ -20,7 +20,7 @@
           <td>APELLIDO</td>
           <td>EMAIL</td>
           <td>FECHA</td>
-          <td>Crear factura</td>
+          <td *ngIf="authSrv.hasRole('ROLE_ADMIN')">Crear factura</td>
           <td *ngIf="authSrv.hasRole('ROLE_ADMIN')">Editar</td>
           <td *ngIf="authSrv.hasRole('ROLE_ADMIN')">Eliminar</td>
         </tr>

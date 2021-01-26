@@ -11,7 +11,7 @@
         <div class="modal-body">
           <div class="container">
             <div class="row mb-2 ml-1">
-              <button class="btn btn-rounded btn-success" type="button" [routerLink]="['/facturas/form', cliente.id]">Nueva factura</button>
+              <button *ngIf="authSrv.hasRole('ROLE_ADMIN')" class="btn btn-rounded btn-success" type="button" [routerLink]="['/facturas/form', cliente.id]">Nueva factura</button>
             </div>
             <div class="row">
               <div class="col-sm">
@@ -65,7 +65,7 @@
                       <th>Fecha</th>
                       <th>Total</th>
                       <th>Detalle</th>
-                      <th>Eliminar</th>
+                      <th *ngIf="authSrv.hasRole('ROLE_ADMIN')">Eliminar</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -75,7 +75,7 @@
                     <td> {{ factura.createAt }} </td>
                     <td> {{ factura.total }} </td>
                     <td> <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/facturas', factura.id]" routerLinkActive="router-link-active" >VER</button> </td>
-                    <td><button class="btn btn-danger btn-sm" type="button" (click)="delete(factura)">Eliminar</button></td>
+                    <td *ngIf="authSrv.hasRole('ROLE_ADMIN')"><button class="btn btn-danger btn-sm" type="button" (click)="delete(factura)">Eliminar</button></td>
                     </tr>
                   </tbody>
                 </table>
