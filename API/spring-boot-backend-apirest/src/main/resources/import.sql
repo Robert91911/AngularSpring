@@ -1,14 +1,14 @@
 /* Populate tabla clientes */
-INSERT INTO regiones (id, nombre) VALUES (1, 'Sudamérica');
-INSERT INTO regiones (id, nombre) VALUES (2, 'Centroamérica');
-INSERT INTO regiones (id, nombre) VALUES (3, 'Norteamérica');
+INSERT INTO regiones (id, nombre) VALUES (1, 'Sudamerica');
+INSERT INTO regiones (id, nombre) VALUES (2, 'Centroamerica');
+INSERT INTO regiones (id, nombre) VALUES (3, 'Norteamerica');
 INSERT INTO regiones (id, nombre) VALUES (4, 'Europa');
 INSERT INTO regiones (id, nombre) VALUES (5, 'Asia');
 INSERT INTO regiones (id, nombre) VALUES (6, 'Africa');
-INSERT INTO regiones (id, nombre) VALUES (7, 'Oceanía');
-INSERT INTO regiones (id, nombre) VALUES (8, 'Antártida');
+INSERT INTO regiones (id, nombre) VALUES (7, 'Oceania');
+INSERT INTO regiones (id, nombre) VALUES (8, 'Antartida');
 
-INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(1, 'Andrés', 'Guzmán', 'profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(1, 'Andres', 'Guzman', 'profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(2, 'Mr. John', 'Doe', 'john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(4, 'Linus', 'Torvalds', 'linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(4, 'Rasmus', 'Lerdorf', 'rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -21,7 +21,7 @@ INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(5, '
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(6, 'Tornado', 'Roe', 'tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(7, 'Jade', 'Doe', 'jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(2, 'Andrés', 'Guzmán', '1profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(2, 'Andres', 'Guzman', '1profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(2, 'Mr. John', 'Doe', '1john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(4, 'Linus', 'Torvalds', '1linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (region_id, nombre, apellido, email, create_at) VALUES(4, 'Rasmus', 'Lerdorf', '1rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -67,7 +67,7 @@ INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES('F
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(3, 2, 6);
 
 /*
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '1profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '1profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '1john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '1linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '1rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -80,7 +80,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '1tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '1jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '2profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '2profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '2john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '2linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '2rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -93,7 +93,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '2tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '2jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '3profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '3profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '3john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '3linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '3rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -106,7 +106,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '3tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '3jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '4profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '4profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '4john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '4linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '4rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -119,7 +119,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '4tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '4jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '5profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '5profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '5john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '5linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '5rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -132,7 +132,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '5tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '5jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '6profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '6profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '6john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '6linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '6rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -145,7 +145,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '6tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '6jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '7profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '7profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '7john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '7linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '7rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -158,7 +158,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '7tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '7jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '8profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '8profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '8john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '8linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '8rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -171,7 +171,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '8tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '8jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '9profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '9profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '9john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '9linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '9rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -184,7 +184,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '9tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '9jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '10profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '10profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '10john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '10linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '10rasmus.lerdorf@gmail.com', '2018-01-04');
@@ -197,7 +197,7 @@ INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Magma', 'Lee',
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Tornado', 'Roe', '10tornado.roe@gmail.com', '2018-03-05');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Jade', 'Doe', '10jane.doe@gmail.com', '2018-03-06');
 
-INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andrés', 'Guzmán', '11profesor@bolsadeideas.com', '2018-01-01');
+INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Andres', 'Guzman', '11profesor@bolsadeideas.com', '2018-01-01');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Mr. John', 'Doe', '11john.doe@gmail.com', '2018-01-02');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Linus', 'Torvalds', '11linus.torvalds@gmail.com', '2018-01-03');
 INSERT INTO clientes (nombre, apellido, email, create_at) VALUES('Rasmus', 'Lerdorf', '11rasmus.lerdorf@gmail.com', '2018-01-04');
